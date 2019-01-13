@@ -13,7 +13,7 @@ Example install in Ubuntu:
 
 ```
 #	virtualenv --python=python3 restapi-tasks
-#	cd todolist-api && source bin/activate
+#	cd restapi-tasks && source bin/activate
 #	git clone https://github.com/leoconstancio/restapi-tasks.git
 #	pip install -r requirements.txt
 #	python manage.py makemigrations
