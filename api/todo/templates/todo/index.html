@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>API REST - To do list</title>
+
+    <!-- CDN Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  </head>
+
+  <main role="main" class="container">
+
+  <body>
+
+    <div class="col-md-12 bg-light p-4">
+
+    <h2 class="border-bottom mb-3">Tasks</h2>
+
+    {% if list_tasks %}
+    <table class="table table-dark">
+      <thead>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Category</th>
+        <th>Priority</th>
+      </thead>
+      <tbody>
+        {% for t in list_tasks %}
+        <tr>
+          <td>{{ t.id }}</td>
+          <td>{{ t.description }}</td>
+          <td>{{ t.date }}</td>
+          <td>{{ t.time }}</td>
+          <td>{{ t.category }}</td>
+          {% if t.priority == "Low" %}
+          <td><span class="badge badge-warning">{{ t.priority }}</span></td>
+          {% elif t.priority == "Medium" %}
+          <td><span class="badge badge-primary">{{ t.priority }}</span></td>
+          {% else %}
+          <td><span class="badge badge-danger">{{ t.priority }}</span></td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+    {% else %}
+    <div class="col-md-5 alert alert-info">
+      There is no tasks! <a href="/api/v1/tasks/">Create new task</a>
+    </div>
+
+    <h5 class="mb-3">Documentation:</h5>
+
+    <ul>
+      <li>API: http://127.0.0.1:8000/api/v1/tasks</li>
+      <li>DELETE: http://127.0.0.1:8000/tasks/&#60;id_task&#62;</li>
+      <li>GET: http://127.0.0.1:8000/tasks/&#60;id_task&#62;</li>
+      <li>PUT: http://127.0.0.1:8000/tasks/&#60;id_task&#62;</li>
+      <li>POST: http://127.0.0.1:8000/tasks</li>
+      <br>
+        <pre class="text-muted">
+          body:
+
+          {
+             "description": "Example task",
+             "date": "2020-12-31",
+             "time": "10:00:00",
+             "category": "Sport",
+             "priority": "Medium"
+          }
+        </pre>
+
+    </ul>
+    {% endif %}
+
+    <hr>
+
+    <a class="btn btn-outline-secondary" href="/tasks">JSON VIEW</a>
+
+  </div>
+
+    <!-- CDN Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    </body>
+  </main>
+</html>
