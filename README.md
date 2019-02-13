@@ -1,5 +1,5 @@
 # About
-REST API with Python, Django and Django REST Framework.
+Rest api with Django, DRF and Vue.JS.
 
 ## Requirements
 

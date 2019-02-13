@@ -8,14 +8,16 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
-class TaskViewSet(viewsets.ModelViewSet):
-    queryset = Task.objects.all()
-    serializer_class = TaskSerializer
-
 def home(request):
     list_tasks = Task.objects.all()
     return render(request, 'todo/index.html', {'list_tasks': list_tasks})
 
+# rest api - DRF    
+class TaskViewSet(viewsets.ModelViewSet):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+
+# rest api - another way
 @csrf_exempt
 def task_list(request):
     if request.method == 'GET':
