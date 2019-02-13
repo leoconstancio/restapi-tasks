@@ -1,46 +1,17 @@
+{% load staticfiles %}
 <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="utf-8">
         <title>Django + Vue.JS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        
-        <!-- bootstrap CSS -->
+        <meta name="description" content="">       
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
             crossorigin="anonymous">
-
-        <style>
-        /* Loader CSS */
-        .loading {
-            border: 8px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 8px solid black;
-            border-bottom: 8px solid black;
-            width: 70px;
-            height: 70px;
-            -webkit-animation: spin 1s linear infinite;
-            animation: spin 2s linear infinite;
-            overflow: show;
-            margin: auto;
-            color: transparent;            
-            }
-
-            @-webkit-keyframes spin {
-            0% { -webkit-transform: rotate(0deg); }
-            100% { -webkit-transform: rotate(360deg); }
-            }
-
-            @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-            } 
-        </style>
-
+        <link rel="stylesheet" href="{% static "css/custom.css" %}">
     </head>
 
-    <body>
-
+<body>
     <div id="vuecrud">
         <div class="container">
             <div class="p-4">
@@ -102,21 +73,16 @@
                         <input type="text" class="form-control" id="description" placeholder="Enter a Description"
                             v-model="newTask.description" required="required">
                     </div>
-                    
                 <div class="form-row">
-                    
                     <div class="col">
                         <label for="date">Date</label>
                         <input type="date" class="form-control" id="date" v-model="newTask.date" required="required">
                     </div>
-                    
                     <div class="col">
                         <label for="time">Time</label>
                         <input type="time" class="form-control" id="time" v-model="newTask.time" required="required">
                     </div>
-
                 </div>
-
                     <div class="form-group mt-3">
                         <label for="category">Category</label>
                         <select class="form-control" id="category" v-model="newTask.category" required="required">
@@ -170,21 +136,16 @@
                         <input type="text" class="form-control" id="description" placeholder="Enter a description"
                             v-model="currentTask.description" required="required">
                     </div>
-                
                 <div class="form-row">
-                
                     <div class="col">
                         <label for="date">Date</label>
                         <input type="date" class="form-control" id="date" v-model="currentTask.date" required="required">
-                    </div>
-                
+                    </div>              
                     <div class="col">
                         <label for="time">Time</label>
                         <input type="time" class="form-control" id="time" v-model="currentTask.time" required="required">
-                    </div>
-                
+                    </div>               
                 </div>
-                
                 <div class="form-group mt-3">
                     <label for="category">Category</label>
                     <select class="form-control" id="category" v-model="currentTask.category" required="required">
@@ -197,7 +158,6 @@
                         <option>Other</option>
                     </select>
                 </div>
-                
                 <div class="form-group mt-2">
                     <label for="priority">Priority</label>
                     <select class="form-control" id="priority" v-model="currentTask.priority" required="required">
@@ -220,48 +180,47 @@
 </div>
 <!-- End editTaskModal -->
 
-<!-- Documentation API Modal -->
-<div class="modal fade" id="apiDoc" tabindex="-1" role="dialog" aria-labelledby="apiDoc" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="apiDoc">API Documentation</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <div class="modal-body">
-        
-        <div><span class="badge badge-secondary">GET ALL</span> http://127.0.0.1:8000/api/v1/tasks</div>
-        <div><span class="badge badge-warning">GET ID</span> http://127.0.0.1:8000/api/v1/tasks/&#60;id_task&#62</div>
-        <div><span class="badge badge-primary">UPDATE</span> http://127.0.0.1:8000/api/v1/tasks/&#60;id_task&#62</div>
-        <div><span class="badge badge-danger">DELETE</span> http://127.0.0.1:8000/api/v1/tasks/&#60;id_task&#62</div>
-        <div><span class="badge badge-success">POST</span> http://127.0.0.1:8000/api/v1/tasks </div>
-         
-        <pre class="text-muted mt-3">
-        
-        Example:
+    <!-- Documentation API Modal -->
+    <div class="modal fade" id="apiDoc" tabindex="-1" role="dialog" aria-labelledby="apiDoc" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="apiDoc">API Documentation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <div class="modal-body">
+            
+            <div><span class="badge badge-secondary">GET ALL</span> http://127.0.0.1:8000/api/v1/tasks</div>
+            <div><span class="badge badge-warning">GET ID</span> http://127.0.0.1:8000/api/v1/tasks/&#60;id_task&#62</div>
+            <div><span class="badge badge-primary">UPDATE</span> http://127.0.0.1:8000/api/v1/tasks/&#60;id_task&#62</div>
+            <div><span class="badge badge-danger">DELETE</span> http://127.0.0.1:8000/api/v1/tasks/&#60;id_task&#62</div>
+            <div><span class="badge badge-success">POST</span> http://127.0.0.1:8000/api/v1/tasks </div>
+            
+            <pre class="text-muted mt-3">
+            
+            Example:
 
-        {
-            "description": "Example task",
-            "date": "2020-12-31",
-            "time": "10:00:00",
-            "category": "Sport",
-            "priority": "Medium"
-        }        
-        </pre>
-        <ul>
-            <li><u>Category choices:</u> Personal, Professional, Important, Sport, Study or Other</li>
-            <li><u>Priority choices:</u> Low, Medium or High</li>
-        </ul>  
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            {
+                "description": "Example task",
+                "date": "2020-12-31",
+                "time": "10:00:00",
+                "category": "Sport",
+                "priority": "Medium"
+            }        
+            </pre>
+            <ul>
+                <li><u>Category choices:</u> Personal, Professional, Important, Sport, Study or Other</li>
+                <li><u>Priority choices:</u> Low, Medium or High</li>
+            </ul>  
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
 </div>
 
     <!-- CDN Bootstrap JavaScript -->
@@ -273,101 +232,9 @@
         crossorigin="anonymous"></script>
 
     <!-- CDN VUE.JS  -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"> </script> -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
-    
     <!-- VUE JS CODE -->
-    <script type="text/javascript">
-
-        new Vue({
-            el: '#vuecrud',
-            delimiters: ['${','}'],
-            data: {
-                tasks: [],
-                loading: false,
-                currentTask: {},
-                message: null,
-                newTask: {
-                    'description': null,
-                    'date': null,
-                    'time': null,
-                    'category': null,
-                    'priority': null },
-            },
-            
-            mounted: function() {
-                this.getTasks();
-            },
-            
-            methods: {
-
-                getTasks: function() {
-                this.loading = true;
-                this.$http.get('api/v1/tasks')
-                    .then((response) => {
-                        this.tasks = response.data;
-                        this.loading = false;
-                    })
-                    .catch((err) => {
-                        this.loading = false;
-                        console.log(err);
-                    })
-
-                },
-                getTask: function(id) {
-                    this.loading = true;
-                    this.$http.get(`api/v1/tasks/${id}`)
-                        .then((response) => {
-                            this.currentTask = response.data;
-                            $("#editTaskModal").modal('show');
-                            this.loading = false;
-                        })
-                        .catch((err) => {
-                            this.loading = false;
-                            console.log(err);
-                        })
-                },
-                addTask: function() {
-                    this.loading = true;
-                    this.$http.post('/api/v1/tasks', this.newTask)
-                        .then((response) => {
-                            this.loading = false;
-                            $("#addTaskModal").modal('hide');
-                            this.getTasks();
-                        })
-                        .catch((err) => {
-                            this.loading = false;
-                            console.log(err);
-                        })
-                },
-                updateTask: function() {
-                    this.loading = true;
-                    this.$http.put(`api/v1/tasks/${this.currentTask.id}`, this.currentTask)
-                        .then((response) => {
-                            this.loading = false;
-                            this.currentTask = response.data;
-                            $("#editTaskModal").modal('hide');
-                            this.getTasks();
-                        })
-                        .catch((err) => {
-                            this.loading = false;
-                            console.log(err);
-                        })
-                },
-                deleteTask: function(id) {
-                    this.loading = true;
-                    this.$http.delete(`api/v1/tasks/${id}`)
-                        .then((response) => {
-                            this.loading = false;
-                            this.getTasks();
-                        })
-                        .catch((err) => {
-                            this.loading = false;
-                            console.log(err);
-                        })
-                }}
-            });
-        </script>
-    </body>
+    <script src="{% static "js/vueapp.js" %}"></script>
+</body>
 </html>
