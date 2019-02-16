@@ -20,13 +20,12 @@ Example install in Ubuntu:
 #	python manage.py migrate
 #	python manage.py createsuperuser
 #	python manage.py runserver
+
+Run tests:
+#   python manage.py test
 ```
 
 Browser access: http://127.0.0.1:8000
-Run tests:
-```
-#   python manage.py test
-```
 
 ##### API
 ```
