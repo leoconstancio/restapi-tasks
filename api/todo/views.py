@@ -42,6 +42,7 @@ def task_detail(request, id_task):
     try:
         task = Task.objects.get(id=id_task)
     except Task.DoesNotExist:
+        print("Object not found!")
         return JsonResponse( {"Error": "Object not found!"}, status=404)
 
     if request.method == 'GET':
@@ -54,11 +55,12 @@ def task_detail(request, id_task):
         if serializer.is_valid():
             serializer.save()
             print("Object updated successfully!")
-            return JsonResponse(serializer.data)
+            return JsonResponse(serializer.data, status=204)
         else:
             print("Update error:", serializer.errors)
         return JsonResponse(serializer.errors, status=400)
 
     elif request.method == 'DELETE':
-        task.delete()
-        return HttpResponse(status=204)
+        if task.delete():
+            print("Task ID {} deleted!".format(id_task))
+            return HttpResponse(status=204)

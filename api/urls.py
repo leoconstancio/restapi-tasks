@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='list_tasks'),
     path('api/v1/tasks', views.task_list, name='tasks-v1'),
-    re_path('api/v1/tasks/(?P<id_task>[0-9]+)', views.task_detail, name='task-v1'),
+    re_path('api/v1/tasks/(?P<id_task>[0-9]+)', views.task_detail, name='taskdetails-v1'),
     # DRF API View
     path('api/v2/', include('api.todo.api_urls'))
 ]
