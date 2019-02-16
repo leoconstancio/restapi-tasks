@@ -22,4 +22,17 @@ Example install in Ubuntu:
 #	python manage.py runserver
 ```
 
-Open http://127.0.0.1:8000 to access
+Browser access: http://127.0.0.1:8000
+Run tests:
+```
+#   python manage.py test
+```
+
+##### API
+```
+GET ALL: /api/v1/tasks
+GET ID: /api/v1/tasks/<id_task>
+UPDATE: /api/v1/tasks/<id_task>
+DELETE: /api/v1/tasks/<id_task>
+POST: /api/v1/tasks
+```
