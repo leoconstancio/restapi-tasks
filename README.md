@@ -35,3 +35,7 @@ UPDATE: /api/v1/tasks/<id_task>
 DELETE: /api/v1/tasks/<id_task>
 POST: /api/v1/tasks
 ```
+
+```
+DEMO: https://todorestapiinaction.herokuapp.com/
+```
